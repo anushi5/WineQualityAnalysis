@@ -15,11 +15,11 @@ y=dataset.iloc[:,11].values
 
 #splitting dataset
 from sklearn.cross_validation import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.25)
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.20)
 
 #fitting KNN to the training set
 from sklearn.neighbors import KNeighborsClassifier
-classifier = KNeighborsClassifier(n_neighbors = 5, metric='minkowski',p=2)
+classifier = KNeighborsClassifier(n_neighbors = 15, metric='minkowski',p=2)
 classifier.fit(x_train,y_train)
 
 # predicting results
@@ -28,8 +28,13 @@ y_pred = classifier.predict(x_test)
 y_proba = classifier.predict_proba(x_test)[0:10]
 
 src = classifier.score(x_test,y_test)
-srcm = classifier.score(x_test,y_pred)
+
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(y_test,y_pred)
+
+print "Accuracy = ",acc 
 
 print y_proba
-print src
-print srcm
+
+
+

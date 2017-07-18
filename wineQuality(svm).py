@@ -25,9 +25,8 @@ classifier.fit(x_train,y_train)
 #predicting results
 y_pred = classifier.predict(x_test)
 
-src = classifier.score(x_test,y_test)
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(y_test,y_pred)
 
-print src
+print "Accuracy = ",acc
 
-print y_pred
-print y_test

@@ -28,8 +28,11 @@ y_pred = classifier.predict(x_test)
 
 preds = classifier.predict_proba(x_test)[0:10]
 
-scr = classifier.score(x_test,y_pred)
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(y_test,y_pred)
+
+print "Accuracy = ",acc
 
 print preds
 
-print scr
+
